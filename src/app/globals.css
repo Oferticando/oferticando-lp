@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - Premium Apple-like */
+  --color-primary: #1d1d1f;
+  --color-primary-600: #000000;
+  --color-secondary: #0071e3; /* Apple Blue Accent */
+  --color-secondary-600: #0077ed;
+  --color-info: #0066cc;
+  --color-background: #ffffff;
+  --color-foreground: #1d1d1f;
+
+  /* Spacing Scale (4px Base) */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-24: 6rem; /* 96px */
+
+  /* Layout Tokens */
+  --container-max-w: 80rem; /* 1280px */
+  --container-narrow: 64rem; /* 1024px */
+
+  /* Radius */
+  --radius-xs: 0.25rem; /* 4px */
+  --radius-sm: 0.5rem; /* 8px */
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1rem; /* 16px */
+  --radius-xl: 1.5rem; /* 24px */
+  --radius-2xl: 2rem; /* 32px */
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:root {
+  --primary-color: var(--color-primary);
+  --secondary-color: var(--color-secondary);
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Component Overrides - Premium Minimalist (Apple-like) */
+.p-button {
+  border-radius: 9999px !important; /* Pill shape for buttons */
+  font-weight: 500 !important;
+  letter-spacing: -0.01em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.p-inputtext,
+.p-password-input,
+.p-dropdown,
+.p-multiselect {
+  border-radius: var(--radius-lg) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  font-size: 0.95rem !important;
+  background-color: #f5f5f7 !important; /* Apple input gray */
+  transition: all 0.3s ease;
+}
+
+.p-inputtext,
+.p-password-input,
+.p-dropdown .p-dropdown-label,
+.p-multiselect .p-multiselect-label {
+  padding: var(--spacing-4) var(--spacing-4) !important;
+}
+
+.p-dropdown,
+.p-multiselect {
+  padding: 0 !important;
+}
+
+.p-inputtext:focus,
+.p-dropdown:focus,
+.p-multiselect:focus {
+  border-color: var(--color-secondary) !important;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15) !important;
+  background-color: #ffffff !important;
+}
+
+.p-card {
+  border-radius: 24px !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.04) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease !important;
+}
+
+.p-card:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Toast Modernization - Glassmorphism */
+.p-toast .p-toast-message {
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+.p-toast .p-toast-message .p-toast-message-text {
+  font-family: inherit;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Confirmation Dialog */
+.p-confirm-dialog {
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  padding: var(--spacing-8) var(--spacing-8) var(--spacing-4) var(--spacing-8) !important;
+}
+
+.p-confirm-dialog .p-dialog-footer {
+  padding: var(--spacing-4) var(--spacing-8) var(--spacing-8) var(--spacing-8) !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Custom Utilities for Spacious SaaS */
+.section-padding {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+@media (max-width: 640px) {
+  .section-padding {
+    padding-top: var(--spacing-10);
+    padding-bottom: var(--spacing-10);
+  }
+}
+
+/* Global Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+.mobile-offers-scroller {
+  overflow-x: hidden !important;
+  overscroll-behavior-x: none;
+}
+
+.mobile-offers-scroller .p-virtualscroller-content,
+.mobile-offers-scroller .p-virtualscroller-loader,
+.mobile-offers-scroller .p-virtualscroller-loading {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.mobile-offers-scroller .p-virtualscroller-content > div {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .mobile-offers-scroller {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .mobile-offers-scroller::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Scroll Reveal */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+}
+
+.reveal-section.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-section:nth-child(2) { transition-delay: 0.1s; }
+.reveal-section:nth-child(3) { transition-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
