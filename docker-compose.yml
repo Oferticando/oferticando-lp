@@ -1,0 +1,33 @@
+services:
+  lp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: oferticando-lp
+    restart: unless-stopped
+    mem_limit: 512m
+    mem_reservation: 256m
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp
+      - /app/.next/cache
+    env_file:
+      - .env.local
+    ports:
+      - "127.0.0.1:43000:43000"
+    networks:
+      - oferticando_net
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:43000/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  oferticando_net:
+    name: oferticando_net
+    driver: bridge
