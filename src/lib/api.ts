@@ -35,8 +35,15 @@ type RetriableRequestConfig = InternalAxiosRequestConfig &
 
 const REFRESH_ROUTE = "/auth/refresh";
 
+function isRefreshRoute(url: string | undefined): boolean {
+  if (!url) return false;
+  const cleanUrl = url.replace(/^\/?(api\/)?/, "");
+  const cleanRefresh = REFRESH_ROUTE.replace(/^\/?(api\/)?/, "");
+  return cleanUrl === cleanRefresh;
+}
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/api` : undefined,
   headers: {
     "Content-Type": "application/json",
   },
@@ -86,6 +93,16 @@ async function refreshSession(): Promise<void> {
 api.interceptors.request.use(
   (config) => {
     const requestConfig = config as RetriableRequestConfig;
+
+    // Corrige caminhos com barra inicial para respeitar o prefixo /api do baseURL
+    if (requestConfig.url && requestConfig.url.startsWith("/") && !requestConfig.url.startsWith("//")) {
+      if (requestConfig.url.startsWith("/api/")) {
+        requestConfig.url = requestConfig.url.substring(5);
+      } else {
+        requestConfig.url = requestConfig.url.substring(1);
+      }
+    }
+
     const headers = normalizeHeaders(requestConfig);
 
     // Deixa o browser definir o boundary automaticamente para uploads.
@@ -129,7 +146,7 @@ api.interceptors.response.use(
       requestConfig &&
       !requestConfig._retry &&
       !requestConfig._skipAuthRefresh &&
-      requestConfig.url !== REFRESH_ROUTE
+      !isRefreshRoute(requestConfig.url)
     ) {
       requestConfig._retry = true;
 
