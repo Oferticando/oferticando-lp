@@ -53,15 +53,25 @@ export function PricingSection() {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isUsingFallback, setIsUsingFallback] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
+    setMounted(true);
     async function loadPlans() {
       try {
         const data = await ApiService.plans.getPublicPlans();
         if (data && data.length > 0) {
-          // Filtra planos ativos e ordena por preço ascendente
+          // Filtra planos ativos, exclui plano 'admin' e ordena por preço ascendente
           const activePlans = data
-            .filter((p) => p.isActive)
+            .filter((p) => p.isActive && p.slug !== "admin")
+            .map((p) => ({
+              ...p,
+              price: Number(p.price),
+              maxVitrines: Number(p.maxVitrines),
+              maxOfertas: Number(p.maxOfertas),
+              maxGrupos: Number(p.maxGrupos),
+              maxWhatsappInstances: Number(p.maxWhatsappInstances),
+            }))
             .sort((a, b) => a.price - b.price);
           setPlans(activePlans);
         } else {
@@ -90,6 +100,7 @@ export function PricingSection() {
     if (value === 0) return "Não incluso";
     return `${value} ${value === 1 ? singularLabel : pluralLabel}`;
   };
+
 
   return (
     <section id="planos" className="py-28 bg-[#ffffff] relative border-t border-b border-gray-100 overflow-hidden">
@@ -126,7 +137,7 @@ export function PricingSection() {
           )}
         </div>
 
-        {isLoading ? (
+        {!mounted || isLoading ? (
           /* Shimmering Skeleton Loader */
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[1, 2, 3].map((i) => (
@@ -157,13 +168,11 @@ export function PricingSection() {
               return (
                 <div
                   key={plan.id}
-                  ref={addToRefs}
-                  className={`opacity-0 translate-y-8 transition-all duration-1000 ease-out flex flex-col border rounded-[2rem] p-8 bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200/80 ${
+                  className={`flex flex-col border rounded-[2rem] p-8 bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-gray-200/80 ${
                     isPro
                       ? "border-2 border-gray-900 md:-translate-y-4 relative md:shadow-xl md:shadow-orange-500/5 hover:border-[#ED6F1D]!"
                       : "border-gray-150 hover:border-gray-900!"
                   }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   {isPro && (
                     <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#ED6F1D] text-white text-[9px] font-black uppercase tracking-[0.25em] px-4 py-1.5 rounded-full flex items-center gap-1 shadow-md">

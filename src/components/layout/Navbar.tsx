@@ -10,7 +10,6 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "";
 
 const primaryNavLinks = [
   { label: "Ofertas", href: ROUTES.OFFERS.LIST },
-  { label: "Vitrines", href: ROUTES.VITRINES_PUBLIC },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];

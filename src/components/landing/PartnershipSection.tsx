@@ -15,30 +15,6 @@ export function PartnershipSection() {
 
   return (
     <section className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 mt-28">
-      
-      {/* Banner do Ecossistema Unificando (Neo-Brutalist design system) */}
-      <div
-        ref={addToRefs}
-        className="opacity-0 translate-y-8 transition-all duration-1000 ease-out border-2 border-gray-900 p-8 md:p-12 rounded-[2rem] bg-white hover:shadow-[8px_8px_0px_#ccff00] hover:-translate-y-1 hover:-translate-x-1 transition-all duration-500 flex flex-col items-center text-center mb-28 group"
-      >
-        <span className="text-[9px] font-black text-gray-400 uppercase tracking-[0.3em] mb-4">
-          Parceria de Infraestrutura
-        </span>
-        <h2 className="text-2xl md:text-3xl font-light text-gray-900 tracking-tight leading-tight max-w-xl mb-6">
-          Alimentado por tecnologia ultraveloz da{" "}
-          <span className="font-semibold underline decoration-[#ccff00] decoration-4 underline-offset-4">
-            Unificando
-          </span>
-        </h2>
-        <p className="text-xs text-gray-500 font-light max-w-md leading-relaxed mb-8">
-          Nossas vitrines públicas e sistemas de clonagem operam nos servidores dedicados da Unificando, garantindo 99.9% de uptime e entregas com latência quase nula.
-        </p>
-        <div className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">
-          Servidores Conectados
-          <span className="w-2 h-2 rounded-full bg-[#ccff00] animate-pulse" />
-        </div>
-      </div>
-
       {/* CTA de Conversão Final */}
       <div
         ref={addToRefs}
