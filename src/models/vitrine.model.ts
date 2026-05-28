@@ -1,7 +1,7 @@
 import { UserResponseDto } from "./user.model";
 
 export interface Vitrine {
-  id: number;
+  id: string | number;
   name: string;
   instagram?: string;
   slug: string;
@@ -35,6 +35,7 @@ export interface UpdateVitrineStatusDto {
 
 /** Resposta simplificada retornada por GET /vitrines/select */
 export interface VitrineSelectOption {
-  id: number;
+  id: string | number;
   name: string;
 }
+

@@ -13,7 +13,7 @@ export interface OfferModel {
 }
 
 export interface OfferResponseDto {
-  id: number;
+  id: string | number;
   active: boolean;
   title: string;
   description: string;
@@ -40,8 +40,8 @@ export interface CreateOfferDto {
   resolved_link: string;
   image_url: string;
   image?: File | null;
-  storeId: number | "";
-  vitrineId: number | "";
+  storeId: string | number | "";
+  vitrineId: string | number | "";
   coupon?: string;
   old_price?: number;
   price: number | null;
@@ -58,15 +58,16 @@ export interface UpdateOfferDto {
   affiliate_link?: string;
   resolved_link?: string;
   image_url?: string;
-  storeId?: number;
-  vitrineId?: number;
+  storeId?: string | number;
+  vitrineId?: string | number;
   regex?: string;
 }
 
 export const OfferResponseSchema = z.object({
-  id: z.number().optional(),
+  id: z.union([z.string(), z.number()]).optional(),
   // Protege o frontend de quebrar se o backend (ou n8n) mandar preços num formato de string ou quebrado
   price: z.preprocess((val) => (typeof val === "string" ? parseFloat(val.replace(/[^\d.-]/g, "")) : Number(val)), z.number()),
   old_price: z.preprocess((val) => (val && val !== "null" ? (typeof val === "string" ? parseFloat(val.replace(/[^\d.-]/g, "")) : Number(val)) : undefined), z.number().optional()),
   discount_percentage: z.preprocess((val) => (val && val !== "null" ? Number(val) : null), z.number().nullable().optional()),
 }).passthrough();
+

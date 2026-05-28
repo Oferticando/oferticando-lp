@@ -5,7 +5,8 @@ import { useEffect } from "react";
 export default function ServiceWorkerRegister() {
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      // Registrar o service worker gerado pelo Serwist
+      // Temporariamente desativado para silenciar erro 404 de sw.js inexistente em dev/Turbopack
+      /*
       navigator.serviceWorker
         .register("/sw.js")
         .then((registration) => {
@@ -14,6 +15,7 @@ export default function ServiceWorkerRegister() {
         .catch((error) => {
           console.error("Falha ao registrar Service Worker:", error);
         });
+      */
     }
   }, []);
 

@@ -1,5 +1,5 @@
 export interface Store {
-  id: number;
+  id: string | number;
   name: string;
   slug: string;
   logo: string;

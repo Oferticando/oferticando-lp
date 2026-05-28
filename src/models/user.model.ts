@@ -2,7 +2,7 @@ import { VitrineSummary } from "./vitrine-summary.model";
 import { Vitrine } from "./vitrine.model";
 
 export interface UserResponseDto extends UserEntity {
-  id: number;
+  id: string | number;
   created_at?: string;
   updated_at?: string;
   isActive?: boolean;
