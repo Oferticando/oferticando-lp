@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ApiStatusBadge from "./ApiStatusBadge";
 
 const footerLinks = {
   site: [
@@ -92,9 +93,10 @@ export default function Footer() {
           <p className="text-xs text-gray-400 font-light">
             © {year} Oferticando. Todos os direitos reservados.
           </p>
-
+          <ApiStatusBadge />
         </div>
       </div>
     </footer>
   );
 }
+

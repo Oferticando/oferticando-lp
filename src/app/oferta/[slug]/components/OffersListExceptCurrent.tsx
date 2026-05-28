@@ -11,9 +11,10 @@ import { OfferResponseDto } from "@/models/offer.model";
 import { ApiService } from "@/services";
 
 interface OffersListExceptCurrentProps {
-  currentOfferId: number;
+  currentOfferId: string | number;
   vitrineSlug?: string | null;
 }
+
 
 const PAGE_SIZE = 12;
 

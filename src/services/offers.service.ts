@@ -81,7 +81,7 @@ class OfferService extends BaseService {
   }
 
   async getAllExceptId(
-    id: number,
+    id: string | number,
     options: FindAllQueryDto,
   ): Promise<PaginatedResponse<OfferResponseDto>> {
     const params = this.buildQueryParams(options);
@@ -116,7 +116,7 @@ class OfferService extends BaseService {
 
   async getByVitrineSlugExceptId(
     slug: string,
-    id: number,
+    id: string | number,
     options: FindAllQueryDto,
   ): Promise<PaginatedResponse<OfferResponseDto>> {
     const params = this.buildQueryParams(options);

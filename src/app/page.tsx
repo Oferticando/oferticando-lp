@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/landing/HeroSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { CalculatorSection } from "@/components/landing/CalculatorSection";
+import { PricingSection } from "@/components/landing/PricingSection";
 import { PartnershipSection } from "@/components/landing/PartnershipSection";
 
 /**
@@ -15,7 +16,9 @@ export default function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <CalculatorSection />
+      <PricingSection />
       <PartnershipSection />
     </div>
   );
 }
+

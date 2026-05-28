@@ -8,6 +8,8 @@ import { userService } from "./user.service";
 import { vitrineService } from "./vitrines.service";
 import { whatsappService } from "./whatsapp.service";
 import { shopeeService } from "./shopee.service";
+import { plansService } from "./plans.service";
+import { systemService } from "./system.service";
 
 export const ApiService = {
   auth: authService,
@@ -20,4 +22,7 @@ export const ApiService = {
   vitrines: vitrineService,
   whatsapp: whatsappService,
   shopee: shopeeService,
+  plans: plansService,
+  system: systemService,
 };
+
