@@ -216,7 +216,7 @@ const PublicOfferList = () => {
 
       {/* Único elemento com scroll — a grid cresce naturalmente dentro dele */}
       <div
-        className="w-full"
+        className="w-full min-h-[calc(100vh-72px)]"
         aria-label="Lista de promoções filtradas"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
