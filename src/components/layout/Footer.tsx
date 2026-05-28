@@ -20,8 +20,16 @@ export default function Footer() {
   const pathname = usePathname();
   const year = new Date().getFullYear();
 
-  // Páginas onde o footer não deve ser exibido (Áreas Logadas e Telas de Auth)
-  const hidePaths = ["/admin", "/perfil", "/login", "/esqueci-senha", "/primeiro-acesso"];
+  // Páginas onde o footer não deve ser exibido (Áreas Logadas, Telas de Auth, Ofertas e Vitrines)
+  const hidePaths = [
+    "/admin",
+    "/perfil",
+    "/login",
+    "/esqueci-senha",
+    "/primeiro-acesso",
+    "/ofertas",
+    "/v/",
+  ];
   const shouldHide = hidePaths.some(path => pathname?.startsWith(path));
 
   if (shouldHide) {

@@ -175,8 +175,11 @@ body {
 }
 
 @keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
   100% {
-    transform: translateX(100%);
+    transform: translateX(200%);
   }
 }
 
@@ -185,7 +188,7 @@ body {
 }
 
 .animate-shimmer {
-  animation: shimmer 2s infinite;
+  animation: shimmer 1.6s ease-in-out infinite;
 }
 
 .mobile-offers-scroller {
