@@ -137,12 +137,6 @@ export default function PoliticaDePrivacidadePage() {
           >
             Termos de Uso →
           </Link>
-          <Link
-            href="/contato"
-            className="text-sm text-gray-400 hover:text-gray-900 transition-colors font-light"
-          >
-            Fale Conosco →
-          </Link>
         </div>
       </div>
     </div>

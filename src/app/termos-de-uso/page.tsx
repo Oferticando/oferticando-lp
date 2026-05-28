@@ -105,9 +105,9 @@ export default function TermosDeUsoPage() {
 
         {/* Introdução */}
         <p className="text-base text-gray-600 font-light leading-relaxed mb-12 pb-12 border-b border-gray-100">
-          Estes Termos de Uso estabelecem as condições para o uso do Oferticando.
-          Leia com atenção antes de utilizar o site. Ao acessar nossas páginas,
-          você concorda com todos os termos aqui descritos.
+          Estes Termos de Uso estabelecem as condições para o uso do
+          Oferticando. Leia com atenção antes de utilizar o site. Ao acessar
+          nossas páginas, você concorda com todos os termos aqui descritos.
         </p>
 
         {/* Seções */}
@@ -131,12 +131,6 @@ export default function TermosDeUsoPage() {
             className="text-sm text-gray-400 hover:text-gray-900 transition-colors font-light"
           >
             ← Política de Privacidade
-          </Link>
-          <Link
-            href="/contato"
-            className="text-sm text-gray-400 hover:text-gray-900 transition-colors font-light"
-          >
-            Fale Conosco →
           </Link>
         </div>
       </div>

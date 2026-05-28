@@ -11,7 +11,6 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "";
 const primaryNavLinks = [
   { label: "Ofertas", href: ROUTES.OFFERS.LIST },
   { label: "Sobre", href: "/sobre" },
-  { label: "Contato", href: "/contato" },
 ];
 
 const Navbar = () => {
@@ -38,15 +37,28 @@ const Navbar = () => {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {primaryNavLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => router.push(link.href)}
-                className="text-[13px] font-medium tracking-tight text-gray-500 hover:text-[#0071e3] transition-colors duration-300"
-              >
-                {link.label}
-              </button>
-            ))}
+            {primaryNavLinks.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              return isExternal ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] font-medium tracking-tight text-gray-500 hover:text-[#0071e3] transition-colors duration-300"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => router.push(link.href)}
+                  className="text-[13px] font-medium tracking-tight text-gray-500 hover:text-[#0071e3] transition-colors duration-300"
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </div>
 
           {/* CTAs Desktop */}
@@ -86,18 +98,32 @@ const Navbar = () => {
       >
         <div className="flex flex-col h-full px-6 py-8 overflow-y-auto">
           <div className="flex-1 space-y-2">
-            {primaryNavLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => {
-                  router.push(link.href);
-                  setMenuOpen(false);
-                }}
-                className="w-full text-left text-xs font-bold uppercase tracking-[0.2em] text-gray-900 py-4 border-b border-gray-100 hover:text-gray-500 transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
+            {primaryNavLinks.map((link) => {
+              const isExternal = link.href.startsWith("http");
+              return isExternal ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full text-left text-xs font-bold uppercase tracking-[0.2em] text-gray-900 py-4 border-b border-gray-100 hover:text-gray-500 transition-colors block"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => {
+                    router.push(link.href);
+                    setMenuOpen(false);
+                  }}
+                  className="w-full text-left text-xs font-bold uppercase tracking-[0.2em] text-gray-900 py-4 border-b border-gray-100 hover:text-gray-500 transition-colors"
+                >
+                  {link.label}
+                </button>
+              );
+            })}
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-100 flex flex-col gap-3 pb-10">
@@ -122,7 +148,9 @@ const Navbar = () => {
                 target="_blank"
                 className="flex flex-col gap-1.5"
               >
-                <span className="text-[8px] font-black text-gray-300 uppercase tracking-[0.3em]">Tecnologia por</span>
+                <span className="text-[8px] font-black text-gray-300 uppercase tracking-[0.3em]">
+                  Tecnologia por
+                </span>
                 <span className="text-xs font-black text-gray-400 tracking-tighter flex items-center gap-2">
                   Unificando
                   <span className="w-1 h-1 rounded-full bg-[#ccff00]" />

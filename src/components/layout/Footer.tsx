@@ -14,7 +14,6 @@ const footerLinks = {
   ],
   empresa: [
     { label: "Sobre o SaaS", href: "/sobre" },
-    { label: "Fale Conosco", href: "/contato" },
     { label: "Área do Cliente", href: `${APP_URL}/login` },
   ],
   legal: [
@@ -37,7 +36,7 @@ export default function Footer() {
     "/ofertas",
     "/v/",
   ];
-  const shouldHide = hidePaths.some(path => pathname?.startsWith(path));
+  const shouldHide = hidePaths.some((path) => pathname?.startsWith(path));
 
   if (shouldHide) {
     return null;
@@ -46,18 +45,17 @@ export default function Footer() {
   return (
     <footer className="w-full border-t border-gray-100 bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        
         {/* Grid de Conteúdo */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 mb-16">
-          
           {/* Marca / Apresentação */}
           <div className="space-y-4">
             <p className="text-sm font-semibold text-gray-900 tracking-tight">
               Oferticando
             </p>
             <p className="text-sm text-gray-400 font-light leading-relaxed max-w-xs">
-              A plataforma SaaS tudo-em-um para afiliados e criadores de conteúdo 
-              criarem vitrines premium de ofertas, automatizarem grupos de WhatsApp e escalarem suas vendas.
+              A plataforma SaaS tudo-em-um para afiliados e criadores de
+              conteúdo criarem vitrines premium de ofertas, automatizarem grupos
+              de WhatsApp e escalarem suas vendas.
             </p>
           </div>
 
@@ -153,7 +151,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          
+
           <ApiStatusBadge />
         </div>
       </div>

@@ -38,9 +38,8 @@ export function SobreClient() {
   return (
     <div className="min-h-screen bg-[#fafafa] selection:bg-orange-100 selection:text-secondary antialiased py-24 px-6 sm:px-8">
       <div className="max-w-4xl mx-auto">
-        
         {/* Cabeçalho & Botão Voltar */}
-        <div 
+        <div
           ref={addToRefs}
           className="opacity-0 translate-y-8 transition-all duration-1000 ease-out mb-16"
         >
@@ -67,9 +66,10 @@ export function SobreClient() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-3xl">
-            O Oferticando não nasceu em uma sala de reuniões corporativa. Ele surgiu 
-            de uma necessidade real, no dia a dia de quem precisava divulgar promoções 
-            de forma profissional, sem perder comissões e sem depender de layouts travados.
+            O Oferticando não nasceu em uma sala de reuniões corporativa. Ele
+            surgiu de uma necessidade real, no dia a dia de quem precisava
+            divulgar promoções de forma profissional, sem perder comissões e sem
+            depender de layouts travados.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ export function SobreClient() {
         <div className="w-px h-16 bg-gray-200 mb-16" />
 
         {/* Seção 1: De Dor Pessoal a SaaS */}
-        <section 
+        <section
           ref={addToRefs}
           className="opacity-0 translate-y-8 transition-all duration-1000 delay-100 ease-out mb-24"
         >
@@ -87,59 +87,72 @@ export function SobreClient() {
                 De criador para criadores.
               </h2>
               <p className="text-base text-gray-500 font-light leading-relaxed">
-                Tudo começou como uma ferramenta interna. Eu precisava de uma página rápida 
-                e bonita para reunir cupons e ofertas, mantendo o controle total dos links 
-                e dos meus afiliados. Nenhuma solução do mercado entregava o visual premium 
-                e a velocidade de carregamento que meu público merecia.
+                Tudo começou como uma ferramenta interna. Eu precisava de uma
+                página rápida e bonita para reunir cupons e ofertas, mantendo o
+                controle total dos links e dos meus afiliados. Nenhuma solução
+                do mercado entregava o visual premium e a velocidade de
+                carregamento que meu público merecia.
               </p>
               <p className="text-base text-gray-500 font-light leading-relaxed">
-                Ao ver a conversão de vendas disparar e a economia de tempo diária ser 
-                absurda, percebi que essa experiência não deveria ser só minha. O 
-                Oferticando foi completamente reconstruído como um **SaaS de alta performance**, 
-                pronto para que qualquer afiliado ou criador de conteúdo crie seu próprio império de vendas.
+                Ao ver a conversão de vendas disparar e a economia de tempo
+                diária ser absurda, percebi que essa experiência não deveria ser
+                só minha. O Oferticando foi completamente reconstruído como um
+                **SaaS de alta performance**, pronto para que qualquer afiliado
+                ou criador de conteúdo crie seu próprio império de vendas.
               </p>
             </div>
-            
+
             {/* Widget Visual - Vitrine Preview */}
             <div className="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/5 rounded-bl-[4rem]" />
-              
+
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Plataforma Ativa</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                  Plataforma Ativa
+                </span>
               </div>
 
               <div className="space-y-4 mb-6">
                 <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100/50 flex justify-between items-center">
                   <div>
-                    <p className="text-xs text-gray-400 font-light">Sua Vitrine Online</p>
-                    <p className="text-sm font-semibold text-gray-800">oferticando.com.br/v/seu-nome</p>
+                    <p className="text-xs text-gray-400 font-light">
+                      Sua Vitrine Online
+                    </p>
+                    <p className="text-sm font-semibold text-gray-800">
+                      oferticando.com.br/v/seu-nome
+                    </p>
                   </div>
                   <i className="pi pi-check-circle text-emerald-500 text-lg" />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100/50">
-                    <p className="text-xs text-gray-400 font-light">Taxa de Cliques</p>
+                    <p className="text-xs text-gray-400 font-light">
+                      Taxa de Cliques
+                    </p>
                     <p className="text-lg font-bold text-secondary">+28.4%</p>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-2xl border border-gray-100/50">
-                    <p className="text-xs text-gray-400 font-light">Comissão SaaS</p>
+                    <p className="text-xs text-gray-400 font-light">
+                      Comissão SaaS
+                    </p>
                     <p className="text-lg font-bold text-gray-800">100% Sua</p>
                   </div>
                 </div>
               </div>
 
               <p className="text-xs text-gray-400 font-light leading-relaxed">
-                Toda a tecnologia necessária para simplificar o seu fluxo de vendas, 
-                eliminando tarefas manuais e maximizando o retorno dos seus cliques.
+                Toda a tecnologia necessária para simplificar o seu fluxo de
+                vendas, eliminando tarefas manuais e maximizando o retorno dos
+                seus cliques.
               </p>
             </div>
           </div>
         </section>
 
         {/* Seção 2: Pilares / Valores do SaaS */}
-        <section 
+        <section
           ref={addToRefs}
           className="opacity-0 translate-y-8 transition-all duration-1000 delay-200 ease-out mb-24"
         >
@@ -152,7 +165,7 @@ export function SobreClient() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
             {pillars.map((pillar) => (
-              <div 
+              <div
                 key={pillar.title}
                 className="bg-white border border-gray-100/70 p-8 rounded-3xl transition-all duration-300 hover:shadow-lg hover:shadow-gray-200/50 hover:-translate-y-1 group flex flex-col justify-between"
               >
@@ -173,12 +186,12 @@ export function SobreClient() {
         </section>
 
         {/* Seção 3: Idealização & Tecnologia (Unificando) */}
-        <section 
+        <section
           ref={addToRefs}
           className="opacity-0 translate-y-8 transition-all duration-1000 delay-300 ease-out mb-24 relative overflow-hidden bg-white border-2 border-gray-900 rounded-[2.5rem] p-10 md:p-14 group transition-all duration-300 hover:shadow-[8px_8px_0px_#020617] hover:-translate-x-1 hover:-translate-y-1"
         >
           <div className="absolute top-0 right-0 w-32 h-32 bg-[#ccff00] rounded-bl-[5rem] opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none" />
-          
+
           <div className="flex flex-col md:flex-row gap-12 items-center relative z-10">
             <div className="flex-1 space-y-6">
               <div className="flex items-center gap-3">
@@ -186,29 +199,36 @@ export function SobreClient() {
                   Idealização & Tecnologia
                 </span>
               </div>
-              
+
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter leading-tight">
-                A força por trás do <br/>
+                A força por trás do <br />
                 <span className="text-secondary">Oferticando.</span>
               </h2>
-              
+
               <div className="space-y-4">
                 <p className="text-base text-gray-500 font-light leading-relaxed">
-                  Este ecossistema SaaS é idealizado e desenvolvido sob a mentoria tecnológica da 
-                  <strong className="text-gray-900 font-bold"> Unificando</strong>, uma agência boutique 
-                  especializada em transformar negócios e alavancar vendas através de automação, 
-                  inteligência artificial e ecossistemas digitais de altíssima escala.
+                  Este ecossistema SaaS é idealizado e desenvolvido sob a
+                  mentoria tecnológica da
+                  <strong className="text-gray-900 font-bold">
+                    {" "}
+                    Unificando
+                  </strong>
+                  , uma agência boutique especializada em transformar negócios e
+                  alavancar vendas através de automação, inteligência artificial
+                  e ecossistemas digitais de altíssima escala.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
                   {[
                     "Automação de WhatsApp",
                     "Ecossistemas em Escala",
                     "Performance Web Máxima",
-                    "IA Aplicada a Afiliados"
+                    "IA Aplicada a Afiliados",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ccff00]" />
-                      <span className="text-xs font-bold text-gray-700 uppercase tracking-tight">{item}</span>
+                      <span className="text-xs font-bold text-gray-700 uppercase tracking-tight">
+                        {item}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -229,25 +249,29 @@ export function SobreClient() {
         </section>
 
         {/* Seção 4: CTA de Conversão Premium */}
-        <section 
+        <section
           ref={addToRefs}
           className="opacity-0 translate-y-8 transition-all duration-1000 delay-300 ease-out mb-12 bg-gray-950 text-white rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden shadow-2xl group"
         >
           {/* Luz de Fundo Decorativa */}
           <div className="absolute -top-24 -right-24 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] group-hover:bg-secondary/20 transition-all duration-700 pointer-events-none" />
-          
+
           <div className="relative z-10 max-w-2xl">
             <span className="inline-block text-[10px] font-bold text-secondary uppercase tracking-[0.3em] mb-4">
               Comece Hoje
             </span>
             <h2 className="text-3xl md:text-5xl font-light tracking-tight text-white mb-6 leading-tight">
-              Pronto para elevar o nível das <span className="font-semibold text-secondary">suas ofertas?</span>
+              Pronto para elevar o nível das{" "}
+              <span className="font-semibold text-secondary">
+                suas ofertas?
+              </span>
             </h2>
             <p className="text-base text-gray-400 font-light leading-relaxed mb-10">
-              Junte-se a centenas de criadores de conteúdo e afiliados que transformaram seus links da bio 
-              em vitrines automáticas, limpas e de alto faturamento. Leva menos de 60 segundos para começar.
+              Junte-se a centenas de criadores de conteúdo e afiliados que
+              transformaram seus links da bio em vitrines automáticas, limpas e
+              de alto faturamento. Leva menos de 60 segundos para começar.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href={`${APP_URL}/cadastro`}
@@ -256,16 +280,17 @@ export function SobreClient() {
                 Criar Minha Vitrine Grátis
                 <i className="pi pi-arrow-right text-[10px] ml-3" />
               </a>
-              <Link
-                href="/contato"
+              <a
+                href="https://wa.me/5581973038013?text=Ol%C3%A1!%20Estou%20na%20p%C3%A1gina%20Sobre%20e%20gostaria%20de%20falar%20com%20o%20Suporte%20do%20Oferticando."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center text-white border border-gray-800 hover:border-white rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] h-14 px-8 transition-colors duration-300"
               >
                 Falar com Suporte
-              </Link>
+              </a>
             </div>
           </div>
         </section>
-
       </div>
     </div>
   );
