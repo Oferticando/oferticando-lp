@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ROUTES } from "@/shared/routes";
@@ -9,9 +9,26 @@ import { OfferResponseDto } from "@/models/offer.model";
 interface ModernOfferCardProps {
   offer: OfferResponseDto;
   vitrineSlug?: string;
+  index?: number;
 }
 
-const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
+const ModernOfferCard = ({ offer, vitrineSlug, index = 0 }: ModernOfferCardProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCoupon = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    if (!offer.coupon) return;
+
+    navigator.clipboard.writeText(offer.coupon);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+
+    if (offer.affiliateLink) {
+      window.open(offer.affiliateLink, "_blank", "noopener,noreferrer");
+    }
+  };
+
   const url = useMemo(() => {
     let base = ROUTES.OFFERS.VIEW(offer?.slug);
     if (vitrineSlug) base += `?vs=${vitrineSlug}`;
@@ -47,10 +64,16 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
     [offer?.oldPrice],
   );
 
+  const isNew = useMemo(() => {
+    if (!offer.createdAt) return false;
+    return Date.now() - new Date(offer.createdAt).getTime() < 24 * 60 * 60 * 1000;
+  }, [offer.createdAt]);
+
   return (
     <Link
       href={url}
-      className="group relative flex w-full flex-col bg-white rounded-2xl md:rounded-3xl border border-gray-100 overflow-hidden cursor-pointer transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/10 hover:border-gray-200"
+      style={{ animationDelay: `${index * 40}ms` }}
+      className="group relative flex w-full flex-col bg-white rounded-2xl md:rounded-3xl border border-gray-100 overflow-hidden cursor-pointer transition-all duration-400 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/10 hover:border-gray-200 animate-in fade-in slide-in-from-bottom-2 duration-300 fill-mode-both"
     >
       {/* ── Imagem ── */}
       <div className="relative aspect-square w-full overflow-hidden bg-[#F9F9F9] rounded-2xl md:rounded-3xl">
@@ -87,11 +110,18 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
             </div>
           )}
 
-          {discountAmount && (
-            <span className="bg-[#FF3B30] text-white text-[10px] md:text-xs font-black px-2 py-1 rounded-xl shadow-lg shadow-red-500/30 leading-none tracking-tight">
-              -{discountAmount}%
-            </span>
-          )}
+          <div className="flex flex-col items-end gap-1 ml-auto">
+            {isNew && (
+              <span className="bg-emerald-500 text-white text-[9px] font-black px-2 py-0.5 rounded-lg shadow-lg shadow-emerald-500/30 leading-none tracking-tight">
+                NOVO
+              </span>
+            )}
+            {discountAmount && (
+              <span className="bg-[#FF3B30] text-white text-[10px] md:text-xs font-black px-2 py-1 rounded-xl shadow-lg shadow-red-500/30 leading-none tracking-tight">
+                -{discountAmount}%
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Overlay CTA no hover */}
@@ -123,23 +153,56 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
         {/* Cupom */}
         {offer.coupon && (
           <div className="mb-2">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 text-[9px] md:text-[10px] font-bold rounded-md border border-blue-200 border-dashed uppercase tracking-wide">
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 12 12"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M1 6l1.5-1.5V3h1.5L5.5 1.5 7 3l1.5-1.5L10 3v1.5L11.5 6 10 7.5V9H8.5L7 10.5 5.5 9 4 10.5H2.5V7.5L1 6Z"
-                  stroke="currentColor"
-                  strokeWidth="1.2"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {offer.coupon}
-            </span>
+            <button
+              onClick={handleCopyCoupon}
+              className={`
+                inline-flex items-center gap-1.5 px-2.5 py-1 
+                text-[9px] md:text-[10px] font-bold rounded-xl 
+                border border-dashed uppercase tracking-wider
+                transition-all duration-300 transform active:scale-95 cursor-pointer
+                ${copied 
+                  ? "bg-emerald-50 text-emerald-600 border-emerald-300 scale-105 shadow-sm shadow-emerald-500/10" 
+                  : "bg-blue-50/80 text-blue-600 border-blue-200 hover:bg-blue-100 hover:text-blue-700 hover:border-blue-300"
+                }
+              `}
+            >
+              {copied ? (
+                <>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="animate-bounce"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  Copiado!
+                </>
+              ) : (
+                <>
+                  <svg
+                    width="9"
+                    height="9"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M1 6l1.5-1.5V3h1.5L5.5 1.5 7 3l1.5-1.5L10 3v1.5L11.5 6 10 7.5V9H8.5L7 10.5 5.5 9 4 10.5H2.5V7.5L1 6Z"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {offer.coupon}
+                </>
+              )}
+            </button>
           </div>
         )}
 
