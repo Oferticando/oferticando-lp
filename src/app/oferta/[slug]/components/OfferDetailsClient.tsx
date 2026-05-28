@@ -46,8 +46,8 @@ const OfferBySlugPage = () => {
 
   /* ── share / copy ── */
   const handleGoToStore = () =>
-    currentOffer?.affiliate_link &&
-    window.open(currentOffer.affiliate_link, "_blank", "noopener,noreferrer");
+    currentOffer?.affiliateLink &&
+    window.open(currentOffer.affiliateLink, "_blank", "noopener,noreferrer");
 
   const handleCopyCoupon = () => {
     if (!currentOffer?.coupon) return;
@@ -104,9 +104,9 @@ const OfferBySlugPage = () => {
     );
   }
 
-  const hasDiscount = !!(currentOffer.old_price && currentOffer.price);
+  const hasDiscount = !!(currentOffer.oldPrice && currentOffer.price);
   const pct = hasDiscount
-    ? discountPct(currentOffer.old_price!, currentOffer.price)
+    ? discountPct(currentOffer.oldPrice!, currentOffer.price)
     : 0;
 
   /* ─── Main ────────────────────────────────────────────────── */
@@ -158,7 +158,7 @@ const OfferBySlugPage = () => {
               {/* Product Image */}
               <div className="w-full h-full flex items-center justify-center p-12 md:p-20">
                 <Image
-                  src={currentOffer.image_url}
+                  src={currentOffer.imageUrl}
                   alt={currentOffer.title}
                   width={1000}
                   height={1000}
@@ -199,9 +199,9 @@ const OfferBySlugPage = () => {
             {/* Price Visualization */}
             <div className="space-y-4">
               <div className="flex items-center gap-4 h-6">
-                 {currentOffer.old_price && (
+                 {currentOffer.oldPrice && (
                    <span className="text-xl text-gray-300 font-light line-through decoration-gray-300 transition-colors">
-                     R$ {currentOffer.old_price}
+                     R$ {currentOffer.oldPrice}
                    </span>
                  )}
                  {pct > 0 && (

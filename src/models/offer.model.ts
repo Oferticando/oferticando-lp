@@ -17,33 +17,33 @@ export interface OfferResponseDto {
   active: boolean;
   title: string;
   description: string;
-  affiliate_link: string;
-  resolved_link: string;
-  image_url: string;
+  affiliateLink: string;
+  resolvedLink: string;
+  imageUrl: string;
   slug: string;
   store: Store;
   vitrine: Vitrine;
-  updated_at: string;
-  created_at: string;
+  updatedAt: string;
+  createdAt: string;
   user: UserResponseDto;
   coupon: string | null;
-  old_price?: number;
+  oldPrice?: number;
   price: number;
   regex?: string | null;
-  whatsapp_template?: string;
-  discount_percentage?: number | null;
+  whatsappTemplate?: string;
+  discountPercentage?: number | null;
 }
 export interface CreateOfferDto {
   title: string;
   description: string;
-  affiliate_link: string;
-  resolved_link: string;
-  image_url: string;
+  affiliateLink: string;
+  resolvedLink: string;
+  imageUrl: string;
   image?: File | null;
   storeId: string | number | "";
   vitrineId: string | number | "";
   coupon?: string;
-  old_price?: number;
+  oldPrice?: number;
   price: number | null;
   regex?: string;
 }
@@ -53,11 +53,11 @@ export interface UpdateOfferDto {
   title?: string;
   description?: string;
   price?: number;
-  old_price?: number;
+  oldPrice?: number;
   coupon?: string;
-  affiliate_link?: string;
-  resolved_link?: string;
-  image_url?: string;
+  affiliateLink?: string;
+  resolvedLink?: string;
+  imageUrl?: string;
   storeId?: string | number;
   vitrineId?: string | number;
   regex?: string;
@@ -67,7 +67,7 @@ export const OfferResponseSchema = z.object({
   id: z.union([z.string(), z.number()]).optional(),
   // Protege o frontend de quebrar se o backend (ou n8n) mandar preços num formato de string ou quebrado
   price: z.preprocess((val) => (typeof val === "string" ? parseFloat(val.replace(/[^\d.-]/g, "")) : Number(val)), z.number()),
-  old_price: z.preprocess((val) => (val && val !== "null" ? (typeof val === "string" ? parseFloat(val.replace(/[^\d.-]/g, "")) : Number(val)) : undefined), z.number().optional()),
-  discount_percentage: z.preprocess((val) => (val && val !== "null" ? Number(val) : null), z.number().nullable().optional()),
+  oldPrice: z.preprocess((val) => (val && val !== "null" ? (typeof val === "string" ? parseFloat(val.replace(/[^\d.-]/g, "")) : Number(val)) : undefined), z.number().optional()),
+  discountPercentage: z.preprocess((val) => (val && val !== "null" ? Number(val) : null), z.number().nullable().optional()),
 }).passthrough();
 

@@ -32,7 +32,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!offer) return { title: "Oferta não encontrada | Oferticando" };
 
   const parsedPrice = offer.price ? Number(offer.price).toFixed(2) : undefined;
-  const discountText = offer.discount_percentage ? ` (${offer.discount_percentage}% OFF)` : "";
+  const discountText = offer.discountPercentage ? ` (${offer.discountPercentage}% OFF)` : "";
 
   return {
     title: `${offer.title}${discountText} | Oferticando`,
@@ -40,7 +40,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     openGraph: {
       title: `${offer.title} - Promoção Imperdível`,
       description: `Compre gora na ${offer.store?.name || 'loja'} economizando com o Oferticando.`,
-      images: offer.image_url ? [{ url: offer.image_url, alt: offer.title }] : [{ url: `${SITE_URL}/og-image.png` }],
+      images: offer.imageUrl ? [{ url: offer.imageUrl, alt: offer.title }] : [{ url: `${SITE_URL}/og-image.png` }],
       url: `${SITE_URL}/oferta/${offer.slug}`,
       type: "article",
     },
@@ -48,7 +48,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${offer.title} - Aproveite o Desconto!`,
       description: `Corre que o preço caiu 🔥. ${offer.description || ''}`,
-      images: offer.image_url ? [offer.image_url] : [`${SITE_URL}/og-image.png`],
+      images: offer.imageUrl ? [offer.imageUrl] : [`${SITE_URL}/og-image.png`],
     }
   };
 }
@@ -63,14 +63,14 @@ export default async function Page(props: Props) {
         "@type": "Product",
         name: offer.title,
         description: offer.description || offer.title,
-        image: offer.image_url,
+        image: offer.imageUrl,
         url: `${SITE_URL}/oferta/${offer.slug}`,
         brand: offer.store?.name
           ? { "@type": "Brand", name: offer.store.name }
           : undefined,
         offers: {
           "@type": "Offer",
-          url: offer.affiliate_link || `${SITE_URL}/oferta/${offer.slug}`,
+          url: offer.affiliateLink || `${SITE_URL}/oferta/${offer.slug}`,
           priceCurrency: "BRL",
           price: offer.price,
           availability: "https://schema.org/InStock",

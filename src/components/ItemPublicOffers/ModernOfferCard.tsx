@@ -19,8 +19,8 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
   }, [offer?.slug, vitrineSlug]);
 
   const discountAmount = useMemo(() => {
-    if (!offer?.old_price || !offer?.price) return null;
-    const old = Number(offer.old_price);
+    if (!offer?.oldPrice || !offer?.price) return null;
+    const old = Number(offer.oldPrice);
     const curr = Number(offer.price);
     if (isNaN(old) || isNaN(curr) || old <= curr) return null;
     const pct = Math.round(((old - curr) / old) * 100);
@@ -38,13 +38,13 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
 
   const formattedOldPrice = useMemo(
     () =>
-      offer?.old_price
-        ? Number(offer.old_price).toLocaleString("pt-BR", {
+      offer?.oldPrice
+        ? Number(offer.oldPrice).toLocaleString("pt-BR", {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
           })
         : null,
-    [offer?.old_price],
+    [offer?.oldPrice],
   );
 
   return (
@@ -54,9 +54,9 @@ const ModernOfferCard = ({ offer, vitrineSlug }: ModernOfferCardProps) => {
     >
       {/* ── Imagem ── */}
       <div className="relative aspect-square w-full overflow-hidden bg-[#F9F9F9] rounded-2xl md:rounded-3xl">
-        {offer?.image_url ? (
+        {offer?.imageUrl ? (
           <Image
-            src={offer.image_url}
+            src={offer.imageUrl}
             alt={offer?.title ?? ""}
             fill
             className="object-contain p-3 md:p-4 transition-transform duration-700 ease-out group-hover:scale-110"
